@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import Option from './Option'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
 
 const HTMLDecoderEncoder = require("html-encoder-decoder");
 
-export default function Trivia( {triviaQ}) {
-
-  console.log(triviaQ)
-  
+export default function Trivia( {triviaQ}, {index} ) {  
   const options = triviaQ.incorrect_answers;
   const correct = triviaQ.correct_answer;
   if (!options.includes(correct)){
@@ -15,29 +13,33 @@ export default function Trivia( {triviaQ}) {
   
   const isCorrect = ( name ) => {
     if (name === correct) {
+      setCls("success");
       setAnswer("correct");
       return true;
     }
     else {
+      setCls("error");
       setAnswer("incorrect");
       return false;
     }
   }
-  const [style, setStyle] = useState("button");
   const [answer, setAnswer] = useState("unanswered");
-
+  const [cls, setCls] = useState("primary");
+   
   return (
+    <Card sx={{py: 3, mx: "auto", width: 800}}>
     <>
-    
-        <div className="category"> Category: {HTMLDecoderEncoder.decode(triviaQ.category)} </div> 
+        <div className="category"> 
+        <h3> Category: {HTMLDecoderEncoder.decode(triviaQ.category)}</h3> 
+        </div> 
         <div className="question-text"> {HTMLDecoderEncoder.decode(triviaQ.question)} </div>  
-        {/* in order to randomize options, I was going to add them to an array and randomly pop items out of it? */}
-        <div className="options">
-        {options.map((option) => <button onClick={() => {isCorrect(option)}}> {HTMLDecoderEncoder.decode(option)} </button>)}
 
-        {answer === "correct" && <p> Correct! </p>}
-        {answer === "incorrect" && <p> Incorrect! </p>}
-        </div>    
-  </>
+        <div className="options">
+        {options.map((option) => <Button variant="contained" color={cls} id={options.indexOf(option)} onClick={() => isCorrect(option)}> {HTMLDecoderEncoder.decode(option)} </Button>)}
+        {answer === "correct" && <h2 color="green"> Correct! </h2>}
+        {answer === "incorrect" && <h2 color="red"> Incorrect </h2>}
+        </div>
+      </>
+    </Card>   
   );
 }

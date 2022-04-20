@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Trivia from './Trivia';
 
+
 function App() {
   const [trivia, setTrivia] = useState(null);
 
@@ -18,7 +19,7 @@ function App() {
 
   return (<>
     <h1> Trivia! </h1>
-    <div> {trivia && trivia.results.map((question) => <Trivia triviaQ={question} /> )} </div>
+    <div> {trivia && trivia.results.map((question) => <Trivia triviaQ={question}/>)} </div>
     </>
   );
 }
