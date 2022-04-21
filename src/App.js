@@ -18,7 +18,7 @@ function App() {
   console.log(trivia)
 
   return (<>
-    <h1> Trivia! </h1>
+    <h1 className="title"> Trivia! </h1>
     <div> {trivia && trivia.results.map((question) => <Trivia triviaQ={question}/>)} </div>
     </>
   );

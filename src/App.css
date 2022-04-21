@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+.title {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: xx-large
+}
+
+.question {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large
+}
+
+.category {
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
