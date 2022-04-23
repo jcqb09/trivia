@@ -40,8 +40,8 @@ export default function Trivia({ triviaQ }, { index }) {
           {options.map((option) => (
             <Button
               variant="contained"
-              color={cls}
               id={options.indexOf(option)}
+              color={cls}
               onClick={() => isCorrect(option)}
             >
               {" "}
